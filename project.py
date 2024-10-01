@@ -16,7 +16,7 @@ def add_task(description, due_date, priority):
     tasks = load_tasks()
     tasks.append(task)
     save_tasks(tasks)
-    return task
+    print(f"Task added: {task}")
 
 # Function to view tasks with optional filtering
 def view_tasks(filter=None):
@@ -62,6 +62,8 @@ def save_tasks(tasks):
 
 # Function to display tasks nicely
 def display_tasks(tasks):
+    if not tasks:
+        print("No tasks found.")
     for task in tasks:
         print(f"ID: {task['id']}, Description: {task['description']}, Due Date: {task['due_date']}, Priority: {task['priority']}")
 
@@ -76,6 +78,8 @@ def pretty_print_tasks():
         print(f"The file {TASK_FILE} was not found.")
     except json.JSONDecodeError:
         print(f"The file {TASK_FILE} does not contain valid JSON.")
+
+# Function to visualize tasks by priority
 def visualize_tasks_by_priority():
     tasks = load_tasks()
     priorities = [task['priority'].lower() for task in tasks]  # Normalizing priority for consistent comparison
@@ -97,39 +101,59 @@ def visualize_tasks_by_priority():
     plt.title('Tasks by Priority')
     plt.xlabel('Priority')
     plt.ylabel('Count')
-    plt.show()
+    plt.show(block=False)
+
 def main():
-    print("Adding tasks...")
-    add_task("Test High Task", "2024-10-10", "high")
-    add_task("Test Medium Task", "2024-10-05", "medium")
-    add_task("Test Low Task", "2024-10-05", "low")
+    print("Welcome to the Task Manager!")
     
-    print("\nAll tasks:")
-    tasks = view_tasks()
-    display_tasks(tasks)
-
-    print("\nTasks with high priority:")
-    high_priority_tasks = view_tasks(filter={'priority': 'high'})
-    display_tasks(high_priority_tasks)
-
-    print("\nTasks with medium priority:")
-    medium_priority_tasks = view_tasks(filter={'priority': 'medium'})
-    display_tasks(medium_priority_tasks)
-
-    print("\nTasks with low priority:")
-    low_priority_tasks = view_tasks(filter={'priority': 'low'})
-    display_tasks(low_priority_tasks)
-
-    print("\nPretty printing all tasks in the file:")
-    pretty_print_tasks()
-
-    print("\nRemoving task with ID 1")
-    remove_task(1)
-
-    print("\nTasks after deletion:")
-    tasks = view_tasks()
-    display_tasks(tasks)
-    visualize_tasks_by_priority()
+    while True:
+        print("\nPlease choose an option:")
+        print("1. Add a task")
+        print("2. View all tasks")
+        print("3. View tasks by priority")
+        print("4. Remove a task")
+        print("5. Visualize tasks by priority")
+        print("6. Pretty print tasks")
+        print("7. Exit")
+        
+        choice = input("Enter your choice (1-7): ").strip()
+        
+        if choice == '1':
+            description = input("Enter task description: ").strip()
+            due_date = input("Enter task due date (YYYY-MM-DD): ").strip()
+            priority = input("Enter task priority (high, medium, low): ").strip().lower()
+            add_task(description, due_date, priority)
+        
+        elif choice == '2':
+            tasks = view_tasks()
+            print("\nAll tasks:")
+            display_tasks(tasks)
+        
+        elif choice == '3':
+            priority = input("Enter the priority to filter by (high, medium, low): ").strip().lower()
+            tasks = view_tasks(filter={'priority': priority})
+            print(f"\nTasks with priority '{priority}':")
+            display_tasks(tasks)
+        
+        elif choice == '4':
+            try:
+                task_id = int(input("Enter the task ID to remove: ").strip())
+                remove_task(task_id)
+            except ValueError:
+                print("Invalid ID. Please enter a number.")
+        
+        elif choice == '5':
+            visualize_tasks_by_priority()
+        
+        elif choice == '6':
+            pretty_print_tasks()
+        
+        elif choice == '7':
+            print("Exiting Task Manager. Goodbye!")
+            break
+        
+        else:
+            print("Invalid choice. Please select a valid option.")
 
 if __name__ == "__main__":
     main()
