@@ -20,7 +20,7 @@ To set up and run this project, follow these steps:
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/yourusername/todo-list-manager.git
+   git clone https://github.com/AICodingGenius/project-todolist-python.git
    cd todo-list-manager
    ```
 
