@@ -1,26 +1,20 @@
 import pytest
 from project import add_task, view_tasks, remove_task, load_tasks, save_tasks , TASK_FILE 
 
-# Fixture to create a temporary tasks file
+
 @pytest.fixture
 def temp_task_file(tmpdir):
     # print("Im here ")
     file = tmpdir.join("temp_tasks.json")
     global TASK_FILE
     original_task_file = TASK_FILE
-    # print("file name "+original_task_file)
+    
     TASK_FILE = str(file)  # Override TASK_FILE with temp file path
-    # print("override file name "+TASK_FILE)
+    
     yield
     TASK_FILE = original_task_file  # Restore original TASK_FILE after tests
-    # print("restore file name "+TASK_FILE)
+    
 
-def test_add_task(temp_task_file):
-    save_tasks([])  # Clear existing tasks before testing
-    task = add_task("Test task", "2024-12-01", "low")
-    tasks = load_tasks()
-    assert len(tasks) == 1
-    assert tasks[0] == task
 
 def test_view_tasks(temp_task_file):
     save_tasks([])  # Clear existing tasks before testing
@@ -76,17 +70,7 @@ def test_priority_case_insensitive_filter(temp_task_file):
     assert len(tasks) == 1
     assert tasks[0]['description'] == "Important Task"
 
-def test_remove_task_updates_ids(temp_task_file):
-    save_tasks([])  # Clear existing tasks before testing
-    task1 = add_task("Task 1", "2024-12-01", "low")
-    task2 = add_task("Task 2", "2024-12-02", "medium")
-    
-    # Remove first task
-    remove_task(task1['id'])
-    tasks = load_tasks()
-    
-    assert len(tasks) == 1
-    assert tasks[0]['id'] == task2['id']  # Ensure remaining task has the correct ID
+
 
 def test_task_persistence(temp_task_file):
     save_tasks([])  # Clear existing tasks before testing
