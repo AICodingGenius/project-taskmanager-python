@@ -145,11 +145,6 @@ Below are some images and screenshots to illustrate the different functionalitie
 ### Running Tests
 ![Running Tests](images/running_tests.png)
 
----
-
-## Contributing
-
-If you wish to contribute to this project, please fork the repository and create a pull request with your changes.
 
 ---
 
