@@ -1,6 +1,7 @@
+
 # Todo List Manager Project
 
-#### Video Demo:  <URL HERE>
+#### Video Demo: [Link to Video](<URL HERE>)
 
 #### Description:
 
@@ -10,9 +11,11 @@ This project is a simple task management tool that allows users to add, view, an
 
 1. [Setup](#setup)
 2. [Usage](#usage)
+   - [Interactive Task Manager](#interactive-task-manager)
 3. [Running the Tests](#running-the-tests)
 4. [Visualizing Tasks](#visualizing-tasks)
 5. [Images and Screenshots](#images-and-screenshots)
+6. [License](#license)
 
 ---
 
@@ -52,7 +55,7 @@ To set up and run this project, follow these steps:
 
 ## Usage
 
-## Interactive Task Manager
+### Interactive Task Manager
 
 An interactive command-line interface is provided to manage tasks without manually writing code. Run the following command to start the task manager:
 
@@ -61,6 +64,7 @@ python project.py
 ```
 
 ### Options Available:
+
 1. **Add a Task**: Enter the description, due date (format `YYYY-MM-DD`), and priority (high, medium, low).
 2. **View All Tasks**: Displays all tasks currently in the JSON file.
 3. **View Tasks by Priority**: Filter tasks based on priority level.
@@ -69,15 +73,13 @@ python project.py
 6. **Pretty Print Tasks**: Outputs the JSON representation of tasks in a readable format.
 7. **Exit**: Exit the interactive interface.
 
-```
-
 ---
 
 ## Running the Tests
 
 This project uses `pytest` for testing. All tests are contained in the `test_project.py` file.
 
-1. **Run All Tests**
+### 1. Run All Tests
 
    To run all tests, execute:
 
@@ -85,21 +87,7 @@ This project uses `pytest` for testing. All tests are contained in the `test_pro
    pytest -v
    ```
 
-2. **Run Specific Test**
-
-   To run a specific test, use:
-
-   ```bash
-   pytest -v test_project.py::test_function_name
-   ```
-
-   For example:
-
-   ```bash
-   pytest -v test_project.py::test_add_task
-   ```
-
-3. **View Output Without Capturing**
+### 2. View Output Without Capturing
 
    To see print statements and other output during testing, use:
 
@@ -132,7 +120,6 @@ Below are some images and screenshots to illustrate the different functionalitie
 
 ### Running Tests
 ![Running Tests](images/running_tests.png)
-
 
 ---
 
