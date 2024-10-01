@@ -1,5 +1,8 @@
-
 # Todo List Manager Project
+
+#### Video Demo:  <URL HERE>
+
+#### Description:
 
 This project is a simple task management tool that allows users to add, view, and remove tasks. It includes features for task visualization by priority and provides testing using `pytest`.
 
