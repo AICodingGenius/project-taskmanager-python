@@ -52,38 +52,23 @@ To set up and run this project, follow these steps:
 
 ## Usage
 
-### Adding Tasks
-You can add tasks to the task manager using the following command:
+## Interactive Task Manager
 
-```python
-from project import add_task
+An interactive command-line interface is provided to manage tasks without manually writing code. Run the following command to start the task manager:
 
-add_task("Task description", "2024-12-31", "high")
+```bash
+python project.py
 ```
 
-### Viewing Tasks
-To view all tasks or filter tasks based on priority or due date:
+### Options Available:
+1. **Add a Task**: Enter the description, due date (format `YYYY-MM-DD`), and priority (high, medium, low).
+2. **View All Tasks**: Displays all tasks currently in the JSON file.
+3. **View Tasks by Priority**: Filter tasks based on priority level.
+4. **Remove a Task**: Delete a task by specifying its ID.
+5. **Visualize Tasks by Priority**: Displays a bar chart of tasks categorized by priority.
+6. **Pretty Print Tasks**: Outputs the JSON representation of tasks in a readable format.
+7. **Exit**: Exit the interactive interface.
 
-```python
-from project import view_tasks
-
-# View all tasks
-tasks = view_tasks()
-
-# View tasks filtered by priority
-high_priority_tasks = view_tasks(filter={'priority': 'high'})
-
-# View tasks filtered by due date
-tasks_due = view_tasks(filter={'due_date': '2024-12-31'})
-```
-
-### Removing Tasks
-To remove a task by its ID:
-
-```python
-from project import remove_task
-
-remove_task(1)  # Replace with the task ID you want to remove
 ```
 
 ---
