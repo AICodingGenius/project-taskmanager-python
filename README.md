@@ -1,7 +1,7 @@
 
 # Todo List Manager Project
 
-#### Video Demo: [Link to Video](<URL HERE>)
+#### Video Demo: [Link to Video](https://youtu.be/n5WrlCtDvek)
 
 #### Description:
 
